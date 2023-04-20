@@ -118,9 +118,13 @@
         
         }
         
-
             //announce winner to the console
-            console.log("Player Score: "+playerScore + "  Computer Score: " +computerScore);
+            if (playerScore>computerScore){
+                alert("You win! Your Score: " + playerScore +" Computer Score: " + computerScore)
+            } else {
+                alert("You Lose! Your Score: " + playerScore +" Computer Score: " + computerScore)
+            }
+            
         
     }
         
