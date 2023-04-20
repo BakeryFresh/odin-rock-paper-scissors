@@ -11,12 +11,12 @@
 <body>
     <div class="nav-head-container">
         <div class="logo">Rock Paper Scissors</div>
-        <button class="nav-menu-options">New Game</button>
+        <button class="nav-menu-options">future button</button>
     </div>
     <div class="game-container">
-        <div class="player-container">Hello</div>
-        <div class="game-info-container">One </div>
-        <div class="computer-container">1232</div>
+        <div class="player-container">future player space</div>
+        <div class="game-info-container">future game counter </div>
+        <div class="computer-container">future computer space</div>
     </div>
 
     <script>
@@ -70,72 +70,73 @@
            
            //only allows five non-draw games to be played. 
             while (playerScore + computerScore < 5){
+                    alert("Current Score: Player: "+playerScore+" Computer: "+computerScore);
+                //computer choice is automated via func getComputerChoice which gives a random 1-3 and returns RPS.
+                const computerSelection = getComputerChoice();
                 
-            //computer choice is automated via func getComputerChoice which gives a random 1-3 and returns RPS.
-            const computerSelection = getComputerChoice();
-            
-            const playerSelection = getPlayerChoice();
-            
-            playRound(playerSelection,computerSelection);
-            
-            //plays a single round of RPS. Winner depends on computer vs human choice. 
-            function playRound(playerSelection, computerSelection) {
-            if (playerSelection === 'rock') {
-                switch (computerSelection) {
-                    case "rock":
-                    
-                    break;
-
-                    case "paper":
-                    
-                    return computerScore++;
-
-                    break;
-
-                    case "scissors":
-                  
-                    return playerScore++;
-                    break;
-                }
-
-            } else if (playerSelection === 'paper') {
-
-                switch (computerSelection) {
-                    case "rock":
-                    
-                    return playerScore++;
-                    break;
-
-                    case "paper":
-                    
-                    break;
-
-                    case "scissors":
-                    
-                    return computerScore++;
-                    break;
-                }
-
-
-            } else if (playerSelection === 'scissors') {
+                const playerSelection = getPlayerChoice();
+                
+                playRound(playerSelection,computerSelection);
+                
+                //plays a single round of RPS. Winner depends on computer vs human choice. 
+                function playRound(playerSelection, computerSelection) {
+                if (playerSelection === 'rock') {
                     switch (computerSelection) {
                         case "rock":
-                        return computerScore++;
+                        alert("It was a draw, try again!");
                         break;
 
                         case "paper":
-                        return playerScore++;
+                        
+                        return computerScore++;
+
                         break;
 
                         case "scissors":
+                    
+                        return playerScore++;
                         break;
                     }
 
+                } else if (playerSelection === 'paper') {
+
+                    switch (computerSelection) {
+                        case "rock":
+                        
+                        return playerScore++;
+                        break;
+
+                        case "paper":
+                        alert("It was a draw, try again!");
+                        break;
+
+                        case "scissors":
+                        
+                        return computerScore++;
+                        break;
+                    }
+
+
+                } else if (playerSelection === 'scissors') {
+                        switch (computerSelection) {
+                            case "rock":
+                            return computerScore++;
+                            break;
+
+                            case "paper":
+                            return playerScore++;
+                            break;
+
+                            case "scissors":
+                            alert("It was a draw, try again!");
+                            break;
+                        }
+
+                    }
+                    
                 }
-                
+            
             }
-        
-        }
         
             //announce winner to the console
             if (playerScore>computerScore){
@@ -147,12 +148,6 @@
         
     }
         
-            
-            
-
-        
-        
-
        
 
     </script>
