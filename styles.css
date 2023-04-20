@@ -10,7 +10,7 @@ body {
     align-items: center;
     padding: 10px;
     margin-right: 40px;
-
+    padding-bottom: 30px;
 }
 
 .logo {
@@ -23,6 +23,16 @@ body {
 
 .nav-menu-options {
     margin-left: auto;
-    
+}
 
+.game-container{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.player-container {
+    display: flex;
+    border-style: dashed;
+    border-color: black;
 }
