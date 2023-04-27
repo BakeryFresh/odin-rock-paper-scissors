@@ -8,6 +8,7 @@
 const playerButtons = document.querySelectorAll(".player-action");
 const bgSwitch = document.querySelector("#bgSwitch");
 
+//toggle light or dark mode
 bgSwitch.addEventListener("change", () => {
   document.body.classList.toggle("dark");
   
@@ -15,6 +16,16 @@ bgSwitch.addEventListener("change", () => {
     button.classList.toggle("dark");
   });
 });
+
+//listen for each of the buttons and declare the players choice for the one chosen.
+playerButtons.forEach((playerButtons) =>{
+    playerButtons.addEventListener('click', () => {
+      
+      playerChoice = playerButtons.id;
+      console.log(playerChoice)
+    });
+});
+
 
 function getComputerChoice() {
   computerMove = Math.floor(Math.random() * (3 - 1 + 1) + 1);
@@ -32,23 +43,23 @@ function getComputerChoice() {
 }
 
 //function to let the player make a game choice. prevents the user from entering non-sanctioned values
-function getPlayerChoice() {
-  playerChoice = prompt("What is your choice? (Rock, Paper, Scissors): ");
-  if (playerChoice != "" && playerChoice != null) {
-    if (
-      playerChoice.toLowerCase() !== "rock" &&
-      playerChoice.toLowerCase() !== "scissors" &&
-      playerChoice.toLowerCase() !== "paper"
-    ) {
-      alert("Please only enter 'Rock, Paper, or Scissors'");
-    } else {
-      console.log(playerChoice + " success");
-      return playerChoice.toLowerCase();
-    }
-  } else {
-    alert("You've cancelled the operation");
-  }
-}
+// function getPlayerChoice() {
+//   playerChoice = prompt("What is your choice? (Rock, Paper, Scissors): ");
+//   if (playerChoice != "" && playerChoice != null) {
+//     if (
+//       playerChoice.toLowerCase() !== "rock" &&
+//       playerChoice.toLowerCase() !== "scissors" &&
+//       playerChoice.toLowerCase() !== "paper"
+//     ) {
+//       alert("Please only enter 'Rock, Paper, or Scissors'");
+//     } else {
+//       console.log(playerChoice + " success");
+//       return playerChoice.toLowerCase();
+//     }
+//   } else {
+//     alert("You've cancelled the operation");
+//   }
+// }
 
 //function to start the game, it will go to a best of 5
 function game() {
