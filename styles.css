@@ -40,12 +40,19 @@ body {
   margin-top: 100px;
 }
 
-.player-container {
+.player-container,
+.computer-container {
   display: flex;
   flex-direction: column;
   border-style: dashed;
   border-color: black;
   padding: 25px;
+  height: 284px;
+  width: 287px;
+}
+
+.computer-container{
+  align-items: center;
 }
 
 .player-action-container{
@@ -64,7 +71,15 @@ body {
   gap: 5px;
 }
 
-.game-container > .game-scoreboard{
+.game-scoreboard{
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 65px;
+  gap: 20px;
+}
+
+.computer-title{
   display: flex;
   align-items: center;
 }
