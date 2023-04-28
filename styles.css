@@ -8,14 +8,10 @@ body {
   
 }
 
+/* toggle dark mode */
 .dark {
   background: #594a4e;
-  transition: color .4s cubic-bezier(.7, 0, .7, 1);
-}
-
-.darkToggle:checked {
-  background: #333;
-  transition: color .4s cubic-bezier(.7, 0, .7, 1);
+  
 }
 
 .nav-head-container {
@@ -133,6 +129,20 @@ body {
   align-items: center;
 }
 
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background-color:#594a4e;
+  color: #fd96ae;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -174,7 +184,7 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #ff8ba7;
 }
 
 input:focus + .slider {
