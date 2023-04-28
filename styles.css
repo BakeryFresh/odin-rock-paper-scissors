@@ -125,7 +125,8 @@ body {
 }
 
 .gameAnnouncement{
-  font: size 44px;
+  font-size:34px;
+  text-align: center;
 }
 .computer-title{
   display: flex;

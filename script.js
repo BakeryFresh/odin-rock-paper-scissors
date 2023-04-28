@@ -1,10 +1,9 @@
-
 const playerButtons = document.querySelectorAll(".player-action");
 const bgSwitch = document.querySelector("#bgSwitch");
 const playerScoreboard = document.querySelector("#playerScoreboard");
 const computerScoreboard = document.querySelector("#computerScoreboard");
-let computerChoiceImage = document.getElementById('computerChoiceImage');
-const gameAnnouncement = document.getElementById('gameAnnouncement')
+let computerChoiceImage = document.getElementById("computerChoiceImage");
+const gameAnnouncement = document.getElementById("gameAnnouncement");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -71,101 +70,118 @@ function getPlayerChoice() {
   // }
 }
 //player wins the round and gets the score
-function roundWon(){
+function roundWon() {
   gameAnnouncement.textContent = "You win the round!";
   playerScore++;
+  playerScoreboard.textContent = playerScore;
 }
 
 //player lost the round and gets the score
-function roundLost(){
+function roundLost() {
   gameAnnouncement.textContent = "You lost the round!";
   computerScore++;
+  computerScoreboard.textContent = computerScore;
 }
 
 //player and computer had a draw. no one gets a score
 function roundDraw() {
   gameAnnouncement.textContent = "This round was a draw, play again!";
 }
+//after five rounds end the game and ask if the player wants to play again
+function gameOver() {
+  //disable the playing buttons
+  for (let i = 0; i < playerButtons.length; i++) {
+    playerButtons[i].disabled = true;
+  }
+  
+
+  //announce who won the game
+  if (playerScore > computerScore) {
+    playerScoreboard.textContent = playerScore;
+    gameAnnouncement.textContent = "You won the game!";
+  } else {
+    computerScoreboard.textContent = computerScore;
+    gameAnnouncement.textContent = "You lost the game!";
+  }
+
+  //ask the player if they want to go again
+  setTimeout(playAgain,2000);
+  
+}
+
+function playAgain() {
+  let oneMoreRound = confirm("Would you like to play again?");
+  computerChoiceImage.src = "./images/emoji-sunglasses.svg"
+
+  if (oneMoreRound) {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreboard.textContent = "0";
+    computerScoreboard.textContent = "0";
+    gameAnnouncement.textContent = "";
+
+    for (let i = 0; i < playerButtons.length; i++) {
+    playerButtons[i].disabled = false;
+    }
+  } else {
+    alert("Get out of here then!");
+    setTimeout(gameOver,3000);
+  }
+}
+
 //plays a single round of RPS. Winner depends on computer vs human choice.
 function playRound(playerSelection) {
+  if (!playerButtons.disabled) {
   let computerSelection = getComputerChoice();
 
-  console.log("Player Selection function started");
-  console.log("Play Sel: " + playerSelection);
-  console.log("Comp Sel: " + computerSelection);
-
+  //take the player choice and compare against the computer choice choosing a winner or loser
   if (playerSelection === "rock") {
     switch (computerSelection) {
       case "rock":
-        roundDraw;
+        roundDraw();
         break;
-
       case "paper":
-        roundLost;
-
+        roundLost();
         break;
-
       case "scissors":
-        roundWon
+        roundWon();
         break;
     }
   } else if (playerSelection === "paper") {
     switch (computerSelection) {
       case "rock":
-        playerScore++;
+        roundWon();
         break;
 
       case "paper":
-        console.log("draw");
+        roundDraw();
         break;
 
       case "scissors":
-        computerScore++;
+        roundLost();
         break;
     }
   } else if (playerSelection === "scissors") {
     switch (computerSelection) {
       case "rock":
-        computerScore++;
+        roundLost();
         break;
 
       case "paper":
-        playerScore++;
+        roundWon();
         break;
 
       case "scissors":
-        console.log("draw");
+        roundDraw();
         break;
     }
   }
 
   //announce winner to the console
   if (playerScore === 5 || computerScore === 5) {
-    if (playerScore > computerScore) {
-      alert(
-        "You win! Your Score: " +
-          playerScore +
-          " Computer Score: " +
-          computerScore
-      );
-    } else {
-      alert(
-        "You Lose! Your Score: " +
-          playerScore +
-          " Computer Score: " +
-          computerScore
-      );
-    }
-    console.log("PS: " + playerScore);
-    playerScoreboard.textContent = playerScore;
-    console.log("CS: " + computerScore);
-    computerScoreboard.textContent = computerScore;
-
-  } else {
-
-  console.log("PS: " + playerScore);
-  playerScoreboard.textContent = playerScore;
-  console.log("CS: " + computerScore);
-  computerScoreboard.textContent = computerScore;
+    gameOver();
+  }
+} else{
+  return;
 }
 }
