@@ -4,6 +4,7 @@ const bgSwitch = document.querySelector("#bgSwitch");
 const playerScoreboard = document.querySelector("#playerScoreboard");
 const computerScoreboard = document.querySelector("#computerScoreboard");
 let computerChoiceImage = document.getElementById('computerChoiceImage');
+const gameAnnouncement = document.getElementById('gameAnnouncement')
 
 let playerScore = 0;
 let computerScore = 0;
@@ -69,7 +70,22 @@ function getPlayerChoice() {
   //   alert("You've cancelled the operation");
   // }
 }
+//player wins the round and gets the score
+function roundWon(){
+  gameAnnouncement.textContent = "You win the round!";
+  playerScore++;
+}
 
+//player lost the round and gets the score
+function roundLost(){
+  gameAnnouncement.textContent = "You lost the round!";
+  computerScore++;
+}
+
+//player and computer had a draw. no one gets a score
+function roundDraw() {
+  gameAnnouncement.textContent = "This round was a draw, play again!";
+}
 //plays a single round of RPS. Winner depends on computer vs human choice.
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
@@ -81,16 +97,16 @@ function playRound(playerSelection) {
   if (playerSelection === "rock") {
     switch (computerSelection) {
       case "rock":
-        console.log("draw");
+        roundDraw;
         break;
 
       case "paper":
-        computerScore++;
+        roundLost;
 
         break;
 
       case "scissors":
-        playerScore++;
+        roundWon
         break;
     }
   } else if (playerSelection === "paper") {

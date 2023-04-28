@@ -3,12 +3,13 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   min-height: 100vh;
+  background-color: #faeee7;
   transition: background-color .6s cubic-bezier(.7, 0, .7, 1);  
+  
 }
 
 .dark {
-  color: white;
-  background: #444;
+  background: #594a4e;
   transition: color .4s cubic-bezier(.7, 0, .7, 1);
 }
 
@@ -22,8 +23,10 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  margin-right: 40px;
   padding-bottom: 30px;
+  background-color: #ffc6c7;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   
 }
 
@@ -32,6 +35,7 @@ body {
   flex-shrink: 0;
   font-size: 44px;
   font-weight: 700;
+  color:#33272a;
 }
 
 .background-mode-toggle {
@@ -50,14 +54,18 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin-top: 100px;
+  overflow:auto;
 }
 
 .player-container,
 .computer-container {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
-  border-style: dashed;
-  border-color: black;
+  background-color: #ffc6c7;
+  border-style: outset;
+  border-color: #c3f0ca;
+  border-radius: 15px;
   padding: 25px;
   height: 284px;
   width: 287px;
@@ -74,27 +82,51 @@ body {
 .player-action-container > button {
   width: 75px;
   height: 75px;
-  gap: 20px;
+  gap: 20px; 
 }
+
 
 .player-action {
   font-weight:600;
+  color: #33272a;
+  background-color: #ff8ba7;
+  transition: background-color .6s cubic-bezier(.7, 0, .7, 1); 
+  
+}
+
+.player-action:hover{
+  background-color:#fd96ae;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .player-title {
   display: flex;
   align-items: center;
   gap: 5px;
+  
 }
-
-.game-scoreboard{
+.game-middle-board{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+.game-scoreboard,
+.gameAnnouncement {
   display: flex;
   align-items: center;
   font-weight: 700;
-  font-size: 65px;
   gap: 20px;
+  color: #91d29b;
+}
+.game-scoreboard{
+  font-size: 65px;
 }
 
+.gameAnnouncement{
+  font: size 44px;
+}
 .computer-title{
   display: flex;
   align-items: center;
