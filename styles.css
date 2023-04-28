@@ -77,6 +77,10 @@ body {
   gap: 20px;
 }
 
+.player-action {
+  font-weight:600;
+}
+
 .player-title {
   display: flex;
   align-items: center;
